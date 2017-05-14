@@ -1,0 +1,84 @@
+﻿<Window x:Class="EVC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EVC"
+        mc:Ignorable="d"
+        Title="EVC Application" Height="550" Width="590" ResizeMode="NoResize">
+    <Canvas>
+        <Label Canvas.Top="20" Canvas.Left="20" Content="IP adress:" HorizontalAlignment="Right" />
+        <TextBox Canvas.Top="25" Canvas.Left="100" Width="100" Name="IPAdressBox"/>
+        
+        <Label Canvas.Top="50" Canvas.Left="20" Content="Port number:" HorizontalAlignment="Right" />
+        <TextBox Canvas.Top="55" Canvas.Left="100" Width="100" Name="PortNumberBox"/>
+
+        <Button Canvas.Top="25"
+                Canvas.Left="250"
+                Content="Load SM data"
+                Width="150"
+                Click="Load_SM"/>
+
+        <Button Canvas.Top="55"
+                Canvas.Left="250"
+                Content="Load PA data"
+                Width="150"
+                Click="Load_PA"/>
+
+        <Button Canvas.Top="85"
+                Canvas.Left="100"
+                Content="Set sonnection"
+                Width="100"
+                Click="Set_Connection"/>
+
+        <Button Canvas.Top="85"
+                Canvas.Left="250"
+                Content="Start"
+                Width="150"
+                IsEnabled="False"
+                Name="StartButton"
+                BorderBrush="#FF0000"
+                Click="Start_Scenario"/>
+
+        <TextBox Canvas.Top="130"
+                 Canvas.Left="20"
+                 Width="250"
+                 Height="250"
+                 TextWrapping="NoWrap" 
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 AcceptsReturn="True" 
+                 Name="SMDataBox"/>
+
+        <TextBox Canvas.Top="400"
+                 Canvas.Left="20"
+                 Width="250"
+                 Height="70"
+                 TextWrapping="NoWrap" 
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 AcceptsReturn="True" 
+                 Name="PADataBox"/>
+
+        <TextBox Canvas.Top="130"
+                 Canvas.Right="20"
+                 Width="250"
+                 Height="250"
+                 TextWrapping="NoWrap" 
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 AcceptsReturn="True" 
+                 Name="SMDataByteBox"/>
+
+        <TextBox Canvas.Top="400"
+                 Canvas.Right="20"
+                 Width="250"
+                 Height="70"
+                 TextWrapping="NoWrap" 
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 AcceptsReturn="True" 
+                 Name="PADataByteBox"/>
+
+    </Canvas>
+</Window>
