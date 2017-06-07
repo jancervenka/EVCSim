@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EVC
 {
-    class MessageContainer
+    public class MessageContainer
     {
         public List<byte> Msg;
 

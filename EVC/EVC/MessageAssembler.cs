@@ -201,13 +201,14 @@ namespace EVC
         {
             List<byte> Payload = new List<byte>();
             List<byte> Message = new List<byte>();
+            byte ID = 18;
 
             Message.Add(0x00);
 
             switch (Words[0])
             {
                 case "GradientProfile":
-                    Message.Add(0x18);
+                    ID = 0x18;
                     for (int i = 1; i < Words.Length - 1; i += 2)
                     {
                         Payload.AddRange(BitConverter.GetBytes(int.Parse(Words[i])));
@@ -217,7 +218,7 @@ namespace EVC
                     break;
 
                 case "SpeedProfile":
-                    Message.Add(0x19);
+                    ID = 0x19;
                     for (int i = 1; i < Words.Length - 1; i += 2)
                     {
                         Payload.AddRange(BitConverter.GetBytes(int.Parse(Words[i])));
@@ -227,7 +228,7 @@ namespace EVC
                     break;
 
                 case "TrackCondProfile":
-                    Message.Add(0x1A);
+                    ID = 0x1A;
                     for (int i = 1; i < Words.Length - 1; i += 2)
                     {
                         Payload.AddRange(BitConverter.GetBytes(int.Parse(Words[i])));
@@ -243,6 +244,7 @@ namespace EVC
 
             
             Message.AddRange(BitConverter.GetBytes((ushort)Payload.Count));
+            Message.Add(ID);
             Message.AddRange(Payload);
 
             return new MessageContainer(Message);

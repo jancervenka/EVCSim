@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVC"
         mc:Ignorable="d"
-        Title="EVC Application" Height="550" Width="590" ResizeMode="NoResize">
+        Title="EVC Application" Height="550" Width="590" ResizeMode="CanMinimize">
     <Canvas>
         <Label Canvas.Top="20" Canvas.Left="20" Content="IP adress:" HorizontalAlignment="Right" />
         <TextBox Canvas.Top="25" Canvas.Left="100" Width="100" Name="IPAdressBox"/>
-        
+
         <Label Canvas.Top="50" Canvas.Left="20" Content="Port number:" HorizontalAlignment="Right" />
         <TextBox Canvas.Top="55" Canvas.Left="100" Width="100" Name="PortNumberBox"/>
 
         <Button Canvas.Top="25"
                 Canvas.Left="250"
-                Content="Load SM data"
+                Content="Load GM data"
                 Width="150"
                 Click="Load_SM"/>
 
@@ -27,7 +27,7 @@
 
         <Button Canvas.Top="85"
                 Canvas.Left="100"
-                Content="Set sonnection"
+                Content="Set connection"
                 Width="100"
                 Click="Set_Connection"/>
 
@@ -47,7 +47,8 @@
                  TextWrapping="NoWrap" 
                  VerticalScrollBarVisibility="Auto"
                  HorizontalScrollBarVisibility="Auto"
-                 AcceptsReturn="True" 
+                 AcceptsReturn="True"
+                 Focusable="False"
                  Name="SMDataBox"/>
 
         <TextBox Canvas.Top="400"
@@ -57,7 +58,8 @@
                  TextWrapping="NoWrap" 
                  VerticalScrollBarVisibility="Auto"
                  HorizontalScrollBarVisibility="Auto"
-                 AcceptsReturn="True" 
+                 AcceptsReturn="True"
+                 Focusable="False"
                  Name="PADataBox"/>
 
         <TextBox Canvas.Top="130"
@@ -67,7 +69,8 @@
                  TextWrapping="NoWrap" 
                  VerticalScrollBarVisibility="Auto"
                  HorizontalScrollBarVisibility="Auto"
-                 AcceptsReturn="True" 
+                 AcceptsReturn="True"
+                 Focusable="False"
                  Name="SMDataByteBox"/>
 
         <TextBox Canvas.Top="400"
@@ -77,7 +80,8 @@
                  TextWrapping="NoWrap" 
                  VerticalScrollBarVisibility="Auto"
                  HorizontalScrollBarVisibility="Auto"
-                 AcceptsReturn="True" 
+                 AcceptsReturn="True"
+                 Focusable="False"
                  Name="PADataByteBox"/>
 
     </Canvas>

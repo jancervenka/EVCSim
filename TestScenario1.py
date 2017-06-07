@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mptch
+
 
 a = 3
 T = 60
@@ -41,12 +43,18 @@ for i in range(len(Vtrain)):
 		       Supervision1[i] + ' ' + 
 		       Supervision2[i] + '\n')
 
+
+VtrainPatch = mptch.Patch(color = 'blue', label = 'Train speed')
+VOvSPatch = mptch.Patch(color = 'yellow', label = 'OvS limit')
+VSBIPatch = mptch.Patch(color = 'red', label = 'SBI limit')
+
 plt.plot(Vtrain)
 plt.plot(Vperm, color = 'y')
 plt.plot(VSBI, color = 'r')
-plt.xlabel('time [s]')
-plt.ylabel('speed [km/h]')
-plt.title('ETCS DMI Test Scenario 1')
+plt.legend(handles = [VtrainPatch, VOvSPatch, VSBIPatch])
+plt.xlabel('Time [s]')
+plt.ylabel('Speed [km/h]')
+#plt.title('ETCS DMI Test Scenario 1')
 plt.xlim([0, len(Vtrain) - 1])
-plt.ylim([0, 200])
+plt.ylim([0, 300])
 plt.show()

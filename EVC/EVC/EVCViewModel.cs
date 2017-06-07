@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using System.ComponentModel;
 
 namespace EVC
 {
-    class EVCViewModel : INotifyPropertyChanged
+    public class EVCViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -35,6 +36,7 @@ namespace EVC
 
         public EVCViewModel()
         {
+
             SMdlg = new Microsoft.Win32.OpenFileDialog();
             PAdlg = new Microsoft.Win32.OpenFileDialog();
 

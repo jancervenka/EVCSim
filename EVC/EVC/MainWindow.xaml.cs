@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace EVC
 {
@@ -25,6 +26,9 @@ namespace EVC
         string IPPattern;
         string NumericPattern;
         MessageAssembler MessageAssembler;
+        EVCServer Server;
+
+        public bool[] StartFlag = { false, false, false };
 
         public MainWindow()
         {
@@ -35,6 +39,12 @@ namespace EVC
             MessageAssembler = new MessageAssembler();
 
         }
+
+        [DllImport("Kernel32")]
+        public static extern void AllocConsole();
+
+        [DllImport("Kernel32")]
+        public static extern void FreeConsole();
 
         private void Load_SM(object sender, RoutedEventArgs e)
         {
@@ -47,7 +57,10 @@ namespace EVC
                 EVCViewModel.SMDataAssembled = MessageAssembler.Assemble(EVCViewModel.SMData, true);
 
                 SMDataByteBox.Text = EVCViewModel.PrintAssembledData(true);
-                StartButton.IsEnabled = true;
+                StartFlag[0] = true;
+
+                if (StartFlag[0] == true && StartFlag[1] == true && StartFlag[2] == true)
+                    StartButton.IsEnabled = true;
             }
         }
 
@@ -62,6 +75,10 @@ namespace EVC
                 EVCViewModel.PADataAssembled = MessageAssembler.Assemble(EVCViewModel.PAData, false);
 
                 PADataByteBox.Text = EVCViewModel.PrintAssembledData(false);
+                StartFlag[1] = true;
+
+                if (StartFlag[0] == true && StartFlag[1] == true && StartFlag[2] == true)
+                    StartButton.IsEnabled = true;
             }
         }
 
@@ -76,6 +93,10 @@ namespace EVC
             {
                 EVCViewModel.IPAdress = IPAdress;
                 EVCViewModel.PortNumber = PortNumberInt;
+                StartFlag[2] = true;
+
+                if (StartFlag[0] == true && StartFlag[1] == true && StartFlag[2] == true)
+                    StartButton.IsEnabled = true;
             }
             else
             {
@@ -85,7 +106,10 @@ namespace EVC
 
         private void Start_Scenario(object sender, RoutedEventArgs e)
         {
-            
+            AllocConsole();
+            Server = new EVCServer(EVCViewModel.PortNumber, EVCViewModel.IPAdress);
+            Server.Start(EVCViewModel.SMDataAssembled, EVCViewModel.PADataAssembled);
+            FreeConsole();
         }
     }
 }

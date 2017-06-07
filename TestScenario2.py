@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.patches as mptch
 
 a = 3 # acceleration [m / s^2]
 
@@ -26,11 +27,14 @@ for i in range(len(Vtrain)):
     
     file.write('\n')
 
+VtrainPatch = mptch.Patch(color = 'blue', label = 'Train speed')
+VOvSPatch = mptch.Patch(color = 'yellow', label = 'OvS limit')
 plt.plot(Vtrain, color = 'b')
 plt.plot(Vperm, color = 'y')
-plt.xlabel('time [s]')
-plt.ylabel('speed [km/h]')
-plt.title('ETCS DMI Test Scenario 2')
+plt.xlabel('Time [s]')
+plt.ylabel('Speed [km/h]')
+#plt.title('ETCS DMI Test Scenario 2')
 plt.xlim([0, len(Vperm) - 1])
-plt.ylim([0, 200])
+plt.ylim([0, 150])
+plt.legend(handles = [VtrainPatch, VOvSPatch])
 plt.show()
